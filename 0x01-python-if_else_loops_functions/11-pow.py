@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# Author -Bamidele Adefolaju
+
 def pow(a, b):
-    """Return a to the power of b"""
     return (a ** b)
