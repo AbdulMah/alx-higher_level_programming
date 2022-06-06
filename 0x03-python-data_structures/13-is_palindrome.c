@@ -1,54 +1,52 @@
 #include "lists.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 /**
-* list_len - finds no. of elements ina linked list.
-* @h: pointer to linked list.
-*
-* Return: number of elements in linked list.
-*/
-size_t list_len(listint_t *h)
-{
-	size_t  nodes = 0;
+ * is_palindrome - check is a linked list is palindrome
+ * @head: head of the list
+ * Return: 0 if not 1 if it is
+ */
 
-	if (h == NULL)
-		return (0);
-	while (h != NULL)
-	{
-		nodes++;
-		h = h->next;
-	}
-	return (nodes);
-}
-
-/**
-* is_palindrome - checks if a singly linked list is a palindrome.
-* @head: double pointert to head of d-list.
-*
-* Return: 1 if palindrome, 0 otherwise.
-*/
 int is_palindrome(listint_t **head)
 {
-	int *nArr, i = 0, j = 0, len = 0;
-	listint_t *temp;
+	listint_t *current = *head, *prev, *next, *left_head, *right_head;
+	int list_len = 0, i = 0, not_p = 0;
 
-	if (*head == NULL)
+	if (*head == NULL || head == NULL)
 		return (1);
-	temp = *head;
-	len = list_len(temp);
-	nArr = (int *)malloc(sizeof(int) * len);
-	if (nArr == NULL)
-		return (2);
-	temp = *head;
-	while (temp != NULL)
+	while (current != NULL)
+		list_len++, current = current->next;
+	if (list_len == 1)
+		return (1);
+	current = *head;
+	for (i = 1; i <= list_len / 2 && current != NULL; i++)
 	{
-		nArr[j] = temp->n;
-		j++;
-		temp = temp->next;
+		next = current->next;
+		if (prev != NULL)
+			current->next = prev;
+		else
+			current->next = NULL;
+		prev = current, current = next;
 	}
-	for (i = 0, j = len - 1; i < j; i++, j--)
+	right_head = current, left_head = prev;
+	for (i = 1; i <= list_len / 2 && current != NULL; i++)
 	{
-		if (nArr[i] != nArr[j])
-			return (0);
+		if (list_len % 2 != 0 && i == 1)
+			current = current->next;
+		if (current->n != prev->n)
+		{
+			not_p = 1;
+			break;
+		}
+		current = current->next, prev = prev->next;
 	}
-	return (1);
+	current = left_head, prev = right_head;
+	for (i = 1; i <= list_len / 2 && current != NULL; i++)
+	{
+		next = current->next;
+		if (prev != NULL)
+			current->next = prev;
+		prev = current, current = next;
+	}
+	return (not_p == 1 ? 0 : 1);
 }
