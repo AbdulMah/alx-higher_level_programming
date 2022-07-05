@@ -1,42 +1,44 @@
 #!/usr/bin/python3
-"""
-Module for log parsing scripts.
-"""
+'''task 14 module'''
 
 
-import sys
+from sys import stdin
 
 
-if __name__ == "__main__":
-    size = [0]
-    codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+status_codes = {
+        '200': 0,
+        '301': 0,
+        '400': 0,
+        '401': 0,
+        '403': 0,
+        '404': 0,
+        '405': 0,
+        '500': 0
+        }
 
-    def check_match(line):
-        '''Checks for regexp match in line.'''
-        try:
-            line = line[:-1]
-            words = line.split(" ")
-            size[0] += int(words[-1])
-            code = int(words[-2])
-            if code in codes:
-                codes[code] += 1
-        except:
-            pass
+total_size = i = 0
 
-    def print_stats():
-        '''Prints accumulated statistics.'''
-        print("File size: {}".format(size[0]))
-        for k in sorted(codes.keys()):
-            if codes[k]:
-                print("{}: {}".format(k, codes[k]))
-    i = 1
-    try:
-        for line in sys.stdin:
-            check_match(line)
-            if i % 10 == 0:
-                print_stats()
-            i += 1
-    except KeyboardInterrupt:
-        print_stats()
-        raise
-    print_stats()
+
+def printer():
+    '''this function prints the statistics'''
+    print(f'File size: {total_size}')
+    for key, value in sorted(status_codes.items()):
+        if value > 0:
+            print('{:s}: {:d}'.format(key, value))
+
+
+try:
+    for line in stdin:
+        splitted_line = line.split()
+        if len(splitted_line) >= 2:
+            status = splitted_line[-2]
+            total_size += int(splitted_line[-1])
+            if status in status_codes:
+                status_codes[status] += 1
+        i += 1
+
+        if i % 10 == 0:
+            printer()
+    printer()
+except KeyboardInterrupt as e:
+    printer()
