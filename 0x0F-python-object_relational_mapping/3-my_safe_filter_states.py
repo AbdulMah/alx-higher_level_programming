@@ -4,7 +4,7 @@
 """
 
 import MySQLdb
-import sys
+from sys import argv
 
 
 def main():
@@ -16,15 +16,15 @@ def main():
 
     # Create a database connection
     conn = MySQLdb.connect(
-                hostname="localhost", port=3306, username=sys.argv[1],
-                password=sys.argv[2], db_name=sys.argv[3], charset="utf8mb4"
+                host="localhost", port=3306, user=argv[1],
+                password=argv[2], db=argv[3], charset="utf8mb4"
             )
     cur = conn.cursor()
     # Select states
-    state_name = sys.argv[4]
+    state_name = argv[4]
     cur.execute(
             "SELECT * FROM states WHERE\
-                    name = %s ORDER BY id ASC", (state_name, ))
+                    name = %s ORDER BY states.id ASC;", (state_name, ))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)

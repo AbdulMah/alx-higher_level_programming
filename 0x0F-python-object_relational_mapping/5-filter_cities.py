@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" This module takes an argument and displays all values states
-    database hbtn_0e_0_usa WHERE name matches the argument.
+""" This module takes the name of a state as argument and displays all cities
+    of that state, using the database hbtn_0e_0_usa
 """
 
 import MySQLdb
@@ -9,8 +9,9 @@ from sys import argv
 
 def main():
     """
-        Function containing code to filter all the states
-        from the database.
+        Entry point to the program:
+        creates a database connection and performs operations on
+        the databse.
     """
 
     # Create a database connection
@@ -22,11 +23,11 @@ def main():
     # Select states
     state_name = argv[4]
     cur.execute(
-            "SELECT * FROM states WHERE\
-                    BINARY name='{}' ORDER BY states.id ASC;".format(state_name))
+            "SELECT name FROM cities WHERE state_id IN\
+            (SELECT id FROM states WHERE name = %s)\
+            ORDER BY cities.id;", (state_name, ))
     query_rows = cur.fetchall()
-    for row in query_rows:
-        print(row)
+    print(', '.join([x[0] for x in query_rows]))
     cur.close()
     conn.close()
 
