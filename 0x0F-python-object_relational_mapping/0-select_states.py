@@ -30,6 +30,7 @@ def main():
 if __name__ == "__main__":
     #main()
     db = MySQLdb.connect(host="localhost:3306",
+                         port = 3306,
                          user=str(argv[1]),
                          password=str(argv[2]),
                          database=str(argv[3])
