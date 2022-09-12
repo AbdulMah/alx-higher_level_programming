@@ -24,11 +24,11 @@ from sys import argv
 
 if __name__ == "__main__":
     #main()
-    db = MySQLdb.connect(host="localhost:3306",
-                         port = 3306,
+    db = MySQLdb.connect(host="localhost",
                          user=str(argv[1]),
                          password=str(argv[2]),
                          database=str(argv[3])
+                         port = 3306
                          )
     cursor = db.cursor()
     cursor.execute("SELECT * FROM states ORDER BY states.id ASC;")
