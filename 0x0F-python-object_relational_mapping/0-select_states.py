@@ -7,11 +7,6 @@ import MySQLdb
 from sys import argv
 
 
-def main():
-    """
-        Function containing code to filter all the states
-        from the database.
-    """
 
     # Create a database connection
     # conn = MySQLdb.connect(
