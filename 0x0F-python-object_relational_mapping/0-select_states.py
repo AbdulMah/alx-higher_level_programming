@@ -29,11 +29,11 @@ def main():
 
 if __name__ == "__main__":
     #main()
-    db = MySQLdb.connect(host="localhost",
-                         port=3306,
-                         user=argv[1],
-                         password=argv[2],
-                         database=argv[3])
+    db = MySQLdb.connect(host="localhost:3306",
+                         user=str(argv[1]),
+                         password=str(argv[2]),
+                         database=str(argv[3])
+                         )
     cursor = db.cursor()
     cursor.execute("SELECT * FROM states ORDER BY states.id ASC;")
     for i in cursor.fetchall():
