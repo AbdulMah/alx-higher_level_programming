@@ -4,7 +4,7 @@
 """
 
 import MySQLdb
-from sys import argv
+import sys
 
 
 
@@ -24,13 +24,13 @@ from sys import argv
 
 if __name__ == "__main__":
     #main()
-    if len(argv) >= 4:
+    if len(sys.argv) >= 4:
         db_connection = MySQLdb.connect(
             host='localhost',
             port=3306,
-            user=argv[1],
-            passwd=argv[2],
-            db=argv[3]
+            user=sys.argv[1],
+            passwd=sys.argv[2],
+            db=sys.argv[3]
         )
         cursor = db_connection.cursor()
         cursor.execute('SELECT * FROM states ORDER BY id ASC;')
