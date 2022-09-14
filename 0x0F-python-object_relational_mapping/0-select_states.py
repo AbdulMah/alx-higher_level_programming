@@ -28,6 +28,6 @@ def main(*args):
 if __name__ == "__main__":
     #main()
     if len(argv) >= 4:
-        #host, port, user, password, db = argv[1], argv[2], argv[3], argv[4]       
-        #main(host, port, user, password, db)
-        main(*argv)
+        host, port, user, password, db = argv[1], argv[2], argv[3], argv[4]       
+        main(host, port, user, password, db)
+        #main(*argv)
