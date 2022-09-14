@@ -1,12 +1,12 @@
 #!/usr/bin/node
-
-const sizeArg = process.argv.length;
-
-if (sizeArg <= 3) {
-  console.log(0);
-} else {
-  const size = process.argv.map(Number);
-  size.slice(2, sizeArg);
-  size.sort((a, b) => a - b);
-  console.log(size[size.length - 2]);
+const myArgs = process.argv.slice(2);
+function secondMax (arr) {
+  if (arr.length <= 1) {
+    return (0);
+  } else {
+    arr.sort((a, b) => a - b);
+    arr.pop();
+    return (arr.pop());
+  }
 }
+console.log(secondMax(myArgs));

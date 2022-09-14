@@ -4,37 +4,30 @@
 """
 
 import MySQLdb
-import sys
+from sys import argv
 
 
-
+def main(*args):
     # Create a database connection
-    # conn = MySQLdb.connect(
-    #             host="localhost", port=3306, user=argv[1],
-    #             password=argv[2], db=argv[3], charset="utf8mb4"
-    #         )
-    # cur = conn.cursor()
-    # cur.execute("SELECT * FROM states ORDER BY states.id ASC;")
-    # query_rows = cur.fetchall()
-    # for row in query_rows:
-    #     print(row)
-    # cur.close()
-    # conn.close()
+    conn = MySQLdb.connect(
+                 host = args[0],
+                 port = args[1], 
+                 user = args[2],
+                 password = args[3], 
+                 db = args[4], 
+                 charset="utf8mb4"
+             )
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM states ORDER BY states.id ASC;")
+    query_rows = cur.fetchall()
+    for row in query_rows:
+        print(row)
+    conn.close()
 
 
 if __name__ == "__main__":
     #main()
-    if len(sys.argv) >= 4:
-        db_connection = MySQLdb.connect(
-            host='localhost',
-            port=3306,
-            user=sys.argv[1],
-            passwd=sys.argv[2],
-            db=sys.argv[3]
-        )
-        cursor = db_connection.cursor()
-        cursor.execute('SELECT * FROM states ORDER BY id ASC;')
-        results = cursor.fetchall()
-        for result in results:
-            print(result)
-        db_connection.close()
+    if len(argv) >= 4:
+        #host, port, user, password, db = argv[1], argv[2], argv[3], argv[4]       
+        #main(host, port, user, password, db)
+        main(*argv)
