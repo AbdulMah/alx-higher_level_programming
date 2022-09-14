@@ -6,8 +6,8 @@ import MySQLdb
 
 
 if __name__ == '__main__':
-    user, password, database = argv[0], argv[1], argv[2]
-    db = MySQLdb.connect(host="localhost:3306", user=user,
+    user, password, database = argv[1], argv[2], argv[3]
+    db = MySQLdb.connect(host="localhost", port=3306, user=user,
                          passwd=password, db=database)
     cursor = db.cursor()
     cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
