@@ -16,6 +16,7 @@ class City(Base):
     state_id(sqlalchemy,Integer): Foreign key to states_id
     """
     __tablename__ = "cities"
+    
     id = Column(Integer, primary_key=True)
     name = Column(String(128), nullable=False)
     state_id = Column(Integer, ForeignKey("states_id"), nullable=False)

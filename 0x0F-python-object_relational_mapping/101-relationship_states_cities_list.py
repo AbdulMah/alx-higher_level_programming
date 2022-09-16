@@ -1,16 +1,15 @@
 #!/usr/bin/python3
 """ Lists all States and corresponding Cities in the database hbtn_0e_101_usa.
-     Usage: ./101-relationship_states_cities_list.py <mysql username> /
-                                                 <mysql password> /
-                                                 <database name>
+     relationship_states_cities_list
 """
-from sys import argv
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from relationship_state import State
-from relationship_city import City
 
-def main():
+if __name__ == "__main__":
+    from sys import argv
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import sessionmaker
+    from relationship_state import State
+    from relationship_city import City
+
     engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}"
                            .format(argv[1], 
                                    argv[2], 
@@ -25,5 +24,4 @@ def main():
             print("    {}: {}".format(city.id, city.name))
 
 
-if __name__ == "__main__":
-    main()
+

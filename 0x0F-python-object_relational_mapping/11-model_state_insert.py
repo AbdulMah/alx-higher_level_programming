@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """Inserts a new state object "Louisiana" to the DB htbn_0e_6_usa"""
-from sys import argv
-from model_state import Base, State
-from sqlalchemy import (create_engine)
-from sqlalchemy.orm import sessionmaker
 
-def main():
+if __name__ == "__main__":
+    from sys import argv
+    from model_state import Base, State
+    from sqlalchemy import (create_engine)
+    from sqlalchemy.orm import sessionmaker
+
     engine = create_engine(
             "mysql+mysqldb://{}:{}@localhost/{}"
             .format(argv[1], 
@@ -20,5 +21,3 @@ def main():
     session.commit()
     print(state.id)
 
-if __name__ == "__main__":
-    main()

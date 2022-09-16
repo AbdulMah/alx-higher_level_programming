@@ -3,23 +3,17 @@
     database hbtn_0e_0_usa.
 """
 
-import MySQLdb
-from sys import argv
-
-
-def main():
-    """
-        Function containing code to select all the cities
-        from the database.
-    """
-
-    # Create a database connection
-    conn = MySQLdb.connect(
-                host="localhost", port=3306, user=argv[1],
-                password=argv[2], db=argv[3], charset="utf8mb4"
-            )
-    cur = conn.cursor()
-    # Select states
+if __name__ == "__main__":
+    from sys import argv
+    import MySQLdb
+    user, password, database = argv[1], argv[2], argv[3]
+    
+    conn = MySQLdb.connect(host='localhost', 
+                           port=3306, 
+                           user=user,
+                           passwd=password, 
+                           db=database)
+    cur = conn.cursor() 
     cur.execute("SELECT cities.id,\
                 cities.name, states.name FROM cities\
                 INNER JOIN states ON\
@@ -31,5 +25,4 @@ def main():
     conn.close()
 
 
-if __name__ == "__main__":
-    main()
+
