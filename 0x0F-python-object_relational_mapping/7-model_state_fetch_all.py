@@ -7,6 +7,7 @@ if __name__ == "__main__":
     from model_state import Base, State
     from sqlalchemy import (create_engine)
     from sqlalchemy.orm import sessionmaker
+    
     engine = create_engine(
         "mysql+mysqldb://{}:{}@localhost/{}"
         .format(argv[1],
@@ -18,3 +19,4 @@ if __name__ == "__main__":
     result = session.query(State).order_by(State.id)
     for state in result:
         print('{}: {}'.format(state.id, state.name))
+    session.close()
