@@ -1,22 +1,26 @@
 #!/usr/bin/python3
-"""Lists the 10 most recent commits on a given GitHub repository.
 
-Usage: ./100-github_commits.py <repository name> <repository owner>
 """
-import sys
-import requests
+    Python script that takes in a string and sends a search
+    request to the Star Wars API
+"""
 
+if __name__ == '__main__':
+    import requests
+    import sys
 
-if __name__ == "__main__":
-    url = "https://api.github.com/repos/{}/{}/commits".format(
-        sys.argv[2], sys.argv[1])
+    repository_name = sys.argv[1]
+    owner = sys.argv[2]
+    headers = {
+              'Accept': 'application/vnd.github.v3+json',
+              }
+    params = {
+        'per_page': 10,
+    }
 
-    r = requests.get(url)
-    commits = r.json()
-    try:
-        for i in range(10):
-            print("{}: {}".format(
-                commits[i].get("sha"),
-                commits[i].get("commit").get("author").get("name")))
-    except IndexError:
-        pass
+    respons = requests.get('https://api.github.com/repos/{}/{}/commits'.format(
+                      owner, repository_name),
+                      headers=headers, params=params)
+    json_response = respons.json()
+    for commit in json_response:
+        print(commit['sha'] + ':', commit['commit']['author']['name'])
