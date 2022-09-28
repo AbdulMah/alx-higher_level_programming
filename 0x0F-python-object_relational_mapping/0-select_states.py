@@ -7,6 +7,7 @@ database hbtn_0e_0_usa
 from sys import argv
 import MySQLdb
 
+
 if __name__ == '__main__':
 
     conn = MySQLdb.connect(user=argv[1],
