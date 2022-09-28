@@ -23,8 +23,8 @@ if __name__ == "__main__":
     """Connect to a MySQL server."""
 
     cursor = db.cursor()
-    upper = "SELECT * FROM states WHERE name = %s ORDER BY states.id ASC"
-    cursor.execute(upper, (argv[4],))
+    query = """SELECT * FROM states WHERE name = %s ORDER BY states.id ASC;"""
+    cursor.execute(query, (argv[4],))
     lists = cursor.fetchall()
     for row in lists:
         print(row)

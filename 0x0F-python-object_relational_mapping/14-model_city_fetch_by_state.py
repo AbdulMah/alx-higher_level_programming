@@ -1,18 +1,20 @@
 #!/usr/bin/python3
-""" kkkkkkkkkkkkkkkk
+""" MODEL
 """
+
+import sys
+from model_city import City
+from model_state import State
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
 
 
 if __name__ == '__main__':
+    engine = create_engine('mysql+mysqldb://{}:{}@{}:{}/{}'.format(
+                           sys.argv[1], sys.argv[2], 'localhost', '3306', sys.argv[3]),
+                           pool_pre_ping=True)
 
-    import sys
-    from model_state import State
-    from model_city import City
-    from sqlalchemy import create_engine
-    from sqlalchemy.orm import sessionmaker
-    engine = create_engine("mysql+mysqldb://{}:{}@{}:{}/{}".format(
-                           sys.argv[1], sys.argv[2], 'localhost', '3306', sys.argv[3]
-                           ), pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     local_session = Session()
     result = local_session.query(City, State).filter(

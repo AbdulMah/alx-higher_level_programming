@@ -9,6 +9,7 @@ Arguments:
 from sys import argv
 import MySQLdb
 
+
 if __name__ == "__main__":
     
     db = MySQLdb.connect(user=argv[1],
@@ -21,4 +22,5 @@ if __name__ == "__main__":
     query = cursor.fetchall()
     for row in query:
         print(row)
+    cursor.close()
     db.close()

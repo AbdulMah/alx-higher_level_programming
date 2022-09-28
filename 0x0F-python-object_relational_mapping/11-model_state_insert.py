@@ -8,15 +8,10 @@ import sys
 
 
 if __name__ == '__main__':
-    username = sys.argv[1]
-    password = sys.argv[2]
-    db_name = sys.argv[3]
-    host = 'localhost'
-    port = '3306'
-
     engine = create_engine('mysql+mysqldb://{}:{}@{}:{}/{}'.format(
-                           username, password, host, port, db_name),
+                           sys.argv[1], sys.argv[2], 'localhost', '3306', sys.argv[3]),
                            pool_pre_ping=True)
+
     Session = sessionmaker(bind=engine)
     local_session = Session()
     new_state = State(name='Louisiana')

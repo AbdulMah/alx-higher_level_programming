@@ -13,10 +13,9 @@ if __name__ == "__main__":
                          db=argv[3],
                          host="localhost",
                          port=3306)
-    """Connect to a MySQL server."""
 
     cursor = db.cursor()
-    query = """SELECT * FROM states WHERE name = '%s' ORDER BY states.id ASC"""
+    query = """SELECT * FROM states WHERE name = '%s' ORDER BY states.id ASC;"""
     cursor.execute(query,argv[4])
     lists = cursor.fetchall()
     for row in lists:
