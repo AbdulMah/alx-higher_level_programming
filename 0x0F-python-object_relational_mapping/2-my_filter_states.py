@@ -4,10 +4,10 @@ Takes in an argument and displays all values in the states
 table of hbtn_0e_0_usa where name matches the argument.
 """
 
-import MySQLdb
-from sys import argv
-if __name__ == "__main__":
 
+if __name__ == "__main__":
+    from sys import argv
+    import MySQLdb
     db = MySQLdb.connect(user=argv[1],
                          passwd=argv[2],
                          db=argv[3],
@@ -16,11 +16,9 @@ if __name__ == "__main__":
     """Connect to a MySQL server."""
 
     cursor = db.cursor()
-
-    upper = "SELECT * FROM states WHERE name = '{}' ORDER BY states.id ASC"\
-            .format(argv[4])
-    cursor.execute(upper)
-    lists = cusor.fetchall()
+    query = """SELECT * FROM states WHERE name = '%s' ORDER BY states.id ASC"""
+    cursor.execute(query,argv[4])
+    lists = cursor.fetchall()
     for row in lists:
         if row[1] == argv[4]:
             print(row)
