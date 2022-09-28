@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" Relationship_state Creates the State “California” with the City “San Francisco”
+""" Relationship_state Creates the State “California” 
+with the City “San Francisco”
      from the database hbtn_0e_100_usa.
     
 """
