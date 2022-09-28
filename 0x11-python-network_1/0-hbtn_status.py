@@ -4,6 +4,7 @@
 
 if __name__ == '__main__':
     import urllib.request as req
+
     with req.urlopen('https://alx-intranet.hbtn.io/status') as res:
         html = res.read()
         print("Body response:")
