@@ -6,11 +6,11 @@ Arguments:
     DB name - Name of the database
 
 """
-
+from sys import argv
+import MySQLdb
 
 if __name__ == "__main__":
-    from sys import argv
-    import MySQLdb
+    
     db = MySQLdb.connect(user=argv[1],
                          passwd=argv[2],
                          db=argv[3],
