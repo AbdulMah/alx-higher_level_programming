@@ -8,7 +8,7 @@
 if __name__ == '__main__':
     import requests
     import sys
-
+    
     user = sys.argv[1]
     passwd = sys.argv[2]
     url = "https://api.github.com/user"

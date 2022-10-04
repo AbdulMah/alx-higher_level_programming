@@ -1,16 +1,13 @@
 #!/usr/bin/python3
-"""
-Describes a function to adding two integers
-"""
+"""Integers addition"""
 
 
 def add_integer(a, b=98):
-    """Take the arguments to add.
+    """Adds two numbers
+    Args:
+        a - first number input
+        b - second number input
 
-    a: One of the numbers, default not defined.
-    b: The other number, default 98.
-
-    Return: int(a + b)
     """
     if type(a) not in [int, float]:
         raise TypeError("a must be an integer")

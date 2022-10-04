@@ -5,20 +5,17 @@ Function to replace some characters with '\n\n'
 
 
 def text_indentation(text):
-    """
-    Prints a text with 2 new lines after some characters.
-    """
+    """Prints a text with 2 new lines
+    Args:
+        text (string): The text to print.
+    Raises:
+        TypeError: If text is not a string.
 
-    if type(text) is not str:
-        raise TypeError("text must be a string")
-    tmp = text.replace(".", ".\n\n")
-    tmp = tmp.replace(":", ":\n\n")
-    tmp = tmp.replace("?", "?\n\n")
-    p = tmp.splitlines(True)
-    ls_strip = []
-    for l in p:
-        if l == "\n":
-            ls_strip.append("\n")
-        else:
-            ls_strip.append(l.lstrip())
-    print("".join(ls_strip), end="")
+    """
+    special = ['.', '?', ':']
+    if not isinstance(str, text):
+        raise TypeError("text must be string")
+    for x in text:
+        print(x, end='')
+        if x in special:
+            print('\n\n', end='')
