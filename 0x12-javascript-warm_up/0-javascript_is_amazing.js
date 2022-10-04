@@ -3,5 +3,5 @@
  * print
  */
 
-const myVar = "JavaScript is amazing";
-console.log(myVar);
+const val = "JavaScript is amazing";
+console.log(val);
