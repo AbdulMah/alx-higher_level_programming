@@ -3,5 +3,5 @@
  * print
  */
 
-const val = "JavaScript is amazing";
+val = "JavaScript is amazing";
 console.log(val);
