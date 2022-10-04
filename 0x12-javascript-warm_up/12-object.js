@@ -1,4 +1,8 @@
 #!/usr/bin/node
+/**
+ * print
+ */
+
 const myObject = {
   type: 'object',
   value: 12

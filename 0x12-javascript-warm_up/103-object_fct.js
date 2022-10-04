@@ -1,4 +1,8 @@
 #!/usr/bin/node
+/**
+ * export
+ */
+
 const myObject = {
   type: 'object',
   value: 12
