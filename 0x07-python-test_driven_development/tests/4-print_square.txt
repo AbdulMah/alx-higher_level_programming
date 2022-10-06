@@ -1,49 +1,45 @@
-Test cases for '4-print_square.py'
-=================================
+==================================
+Prototype: def print_square(size):
+===================================
+Import the 4-print_square module
+	>>> print_square = __import__('4-print_square').print_square
 
-Print a square
---------------
+========
+Usage:
+========
+	>>> print_square(4)
+	####
+	####
+	####
+	####
+	
+	>>> print_square(0)
+	
+	>>> print_square(1)
+	#
 
->>> print_square = __import__('4-print_square').print_square
+=============
+Types of error
+============
 
-Cases to be evaluated:
+If called with a negative number
+	>>> print_square(-1)
+	Traceback (most recent call last):
+	ValueError: size must be >= 0
 
-Case #1: test passing zero arguments.
->>> print_square()
-Traceback (most recent call last):
-...
-TypeError: print_square() missing 1 required positional argument: 'size'
+If size is a float and is less than 0, or not an integer
+	>>> print_square(6.4)
+	Traceback (most recent call last):
+	TypeError: size must be an integer
+	
+	>>> print_square("three")
+	Traceback (most recent call last):
+	TypeError: size must be an integer
 
-Case #2: test passing Null argument.
->>> print_square(None)
-Traceback (most recent call last):
-...
-TypeError: size must be an integer
+	>>> print_square()
+	Traceback (most recent call last):
+	TypeError: print_square() missing 1 required postional argument: 'size'
 
-Case #3: test passing a negative number.
->>> print_square(-4)
-Traceback (most recent call last):
-...
-ValueError: size must be >= 0
-
-Case #4: test passing a float number.
->>> print_square(6.6)
-Traceback (most recent call last):
-...
-TypeError: size must be an integer
-
-Case #5: test passing a string.
->>> print_square("a")
-Traceback (most recent call last):
-...
-TypeError: size must be an integer
-
-Case #6: test passing zero value.
->>> print_square(0)
-<BLANKLINE>
-
-Case #7: test passing an infinite number.
->>> print_square(float('inf'))
-Traceback (most recent call last):
-...
-TypeError: size must be an integer
+	>>> print_square(None)
+	Traceback (most recent call last):
+	TypeError: size must be an integer

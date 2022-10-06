@@ -1,21 +1,32 @@
 #!/usr/bin/python3
+
 """
-Function to replace some characters with '\n\n'
+    Defines a function that prints a text with 2
+    new lines after each of a specified character.
 """
 
 
 def text_indentation(text):
-    """Prints a text with 2 new lines
-    Args:
-        text (string): The text to print.
-    Raises:
-        TypeError: If text is not a string.
-
     """
-    special = ['.', '?', ':']
-    if not isinstance(str, text):
-        raise TypeError("text must be string")
-    for x in text:
-        print(x, end='')
-        if x in special:
-            print('\n\n', end='')
+        Prints text with 2 new lines after each of
+        these characters '.' '?' and ':'
+
+        param: text(str) - the text to be searched for characters
+    """
+    if type(text) != str:
+        raise TypeError("text must be a string")
+
+    x = 0
+    while x < len(text) and text[x] == " ":
+        x += 1
+
+    while x < len(text):
+        print(text[x], end='')
+        if text[x] == "\n" or text[x] in ".?:":
+            if text[x] in ".?:":
+                print("\n")
+            x += 1
+            while x < len(text) and text[x] == " ":
+                x += 1
+            continue
+        x += 1

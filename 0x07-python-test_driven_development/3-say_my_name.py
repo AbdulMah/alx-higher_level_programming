@@ -1,20 +1,19 @@
 #!/usr/bin/python3
+
 """
-Function to print a phrase
+    This module defines a function that prints
+    a firstname and a lastname
 """
 
 
 def say_my_name(first_name, last_name=""):
     """
-    Prints a phrase with:
-
-    first_name: string to be printed
-    last_name: second string to be printed
-
-    Return: A formatted output with the strings.
+        Takes two string as input and prints them to stdout
+        param: first_name(str) - the first name to print
+        param: last_name(str) - the last name to print (optional)
     """
-    if type(first_name) not in [str]:
+    if type(first_name) != str:
         raise TypeError("first_name must be a string")
-    if type(last_name) not in [str]:
+    if type(last_name) != str:
         raise TypeError("last_name must be a string")
-    print("My name is {} {}".format(first_name, last_name))
+    print("My name is {:s} {:s}".format(first_name, last_name))
