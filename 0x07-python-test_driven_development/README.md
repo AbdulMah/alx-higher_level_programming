@@ -10,8 +10,3 @@ In this project I learnt to how to use Test-driven development
 
 
 ## Files, Prototypes, Description, Test-files
-
-|  Files	   |Prototype	  |Description             |Test file (doctest)                                                                      | Test file (input/output)
-|------------------|--------------|------------------------|------------------------------------------------------------------------------|--------------|
-|0-add_integer.py | add_integer(a, b-98): | Returns the addition of its two integer args | [0-add_integer.txt](./tests/0-add_integer.txt) |[0-main.py](./tests/0-main.py) |
-|2-matrix_divided.py | matrix_divided(matrix, div): | Divides each element of matrix by div and returns a new matrix | [2-matrix-divided.txt](./tests/2-matrix_divided.txt) | [2-main.py](./tests/2-main.py) | 
